@@ -1,0 +1,2778 @@
+/* ==========================================
+   CONNECT PLATFORM - COMPLETE STYLESHEET
+   ENGR 1340 - Project 2
+   
+   This stylesheet contains ALL styles for the Connect Platform website.
+   It includes styles for 4 pages:
+   1. Landing Page (index.html)
+   2. Student Dashboard (student-dashboard.html)
+   3. Company Dashboard (company-dashboard.html)
+   4. Project Listings (projects.html)
+   
+   HOW TO USE THIS FILE:
+   - Read the comments to understand what each style does
+   - Look for TODO comments to see where you need to customize
+   - Follow the HINT comments for syntax guidance
+   - Use the EXAMPLE comments to see how properties work
+   
+   CSS ORGANIZATION:
+   1. CSS Variables (Color Scheme)
+   2. Base Styles & Reset
+   3. Layout Utilities
+   4. Navigation Bar
+   5. Buttons
+   6. Landing Page Styles
+   7. Dashboard Common Styles
+   8. Student Dashboard Specific
+   9. Company Dashboard Specific
+   10. Project Listings Specific
+   11. Responsive Design (Media Queries)
+   12. Accessibility Enhancements
+   13. Print Styles
+   ========================================== */
+
+/* ==========================================
+   1. CSS VARIABLES (COLOR SCHEME)
+   ========================================== 
+   
+   WHAT ARE CSS VARIABLES?
+   CSS Variables (also called Custom Properties) let you store values
+   that you can reuse throughout your stylesheet. Instead of typing
+   the same color code multiple times, you define it once and reference it.
+   
+   WHY USE THEM?
+   - Easy to maintain (change color in one place, updates everywhere)
+   - Consistent design (same colors used throughout)
+   - Professional practice (industry standard)
+   
+   HOW TO USE:
+   Define: --variable-name: value;
+   Use: property: var(--variable-name);
+   
+   EXAMPLE:
+   Define: --primary-color: #2563eb;
+   Use: background-color: var(--primary-color);
+*/
+
+:root {
+    /* PRIMARY COLORS - Main brand colors used throughout the site */
+    --primary-color: #2563eb;      /* Blue - Used for main actions, links, emphasis */
+    --secondary-color: #7c3aed;    /* Purple - Used for secondary actions, accents */
+    
+    /* TEXT COLORS - For readability and hierarchy */
+    --text-dark: #1f2937;          /* Dark gray - Main body text, headings */
+    --text-light: #6b7280;         /* Medium gray - Secondary text, descriptions */
+    
+    /* BACKGROUND COLORS - For page sections and containers */
+    --background: #ffffff;         /* White - Main page background */
+    --background-alt: #f9fafb;     /* Light gray - Alternate sections, cards */
+    
+    /* BORDER AND DIVIDER COLORS */
+    --border-color: #e5e7eb;       /* Light gray - Borders, dividers, outlines */
+    
+    /* STATUS COLORS - For feedback and states */
+    --success-color: #10b981;      /* Green - Success messages, completed items */
+    --error-color: #ef4444;        /* Red - Error messages, warnings */
+    --warning-color: #f59e0b;      /* Orange - Warning states */
+    --info-color: #3b82f6;         /* Blue - Information messages */
+    
+    /* SHADOW VALUES - For depth and elevation */
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+    
+    /* SPACING VALUES - For consistent spacing */
+    --spacing-xs: 0.25rem;  /* 4px */
+    --spacing-sm: 0.5rem;   /* 8px */
+    --spacing-md: 1rem;     /* 16px */
+    --spacing-lg: 1.5rem;   /* 24px */
+    --spacing-xl: 2rem;     /* 32px */
+    
+    /* BORDER RADIUS - For rounded corners */
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-full: 9999px;  /* Perfect circle */
+    
+    /* TRANSITION SPEED - For smooth animations */
+    --transition-fast: 0.2s;
+    --transition-normal: 0.3s;
+    --transition-slow: 0.5s;
+}
+
+/* TODO: Customize Your Color Scheme
+   Replace the color values above to match your team's Figma design.
+   
+   HINT: Use a color picker tool to get exact hex codes from your Figma prototype
+   
+   TIPS:
+   - Keep contrast high for accessibility (text should be readable)
+   - Use your primary color for important actions (buttons, links)
+   - Use secondary color sparingly for accents
+   - Test your colors on different screens
+   
+   EXAMPLE: If your design uses orange as the primary color:
+   --primary-color: #f97316;
+*/
+
+/* ==========================================
+   2. BASE STYLES & RESET
+   ========================================== 
+   
+   WHAT IS A CSS RESET?
+   Different browsers have different default styles for HTML elements.
+   A CSS reset removes these inconsistencies so your site looks the
+   same across all browsers.
+   
+   WHY DO WE NEED IT?
+   Without a reset:
+   - Margins and padding vary between browsers
+   - Fonts sizes differ
+   - Elements look inconsistent
+   
+   This section "resets" all elements to a consistent starting point.
+*/
+
+/* UNIVERSAL SELECTOR (*)
+   Applies to EVERY element on the page
+   The box-sizing property controls how width/height are calculated
+   - border-box: width includes padding and border (easier to work with)
+   - content-box: width is just the content (default, harder to calculate)
+*/
+* {
+    margin: 0;              /* Remove default margins from all elements */
+    padding: 0;             /* Remove default padding from all elements */
+    box-sizing: border-box; /* Include padding and border in element's total width/height */
+}
+
+/* BODY ELEMENT
+   The body is the main container for all visible content
+   These styles affect the entire page
+*/
+body {
+    /* FONT FAMILY
+       The browser tries each font in order until it finds one installed
+       This is called a "font stack" */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    /* Explanation: 
+       -apple-system = Apple's system font (Mac/iOS)
+       BlinkMacSystemFont = Chrome on Mac
+       'Segoe UI' = Windows system font
+       Roboto = Android system font
+       Fallbacks: Helvetica Neue, Arial, generic sans-serif
+    */
+    
+    font-size: 16px;        /* Base font size (1rem = 16px) */
+    line-height: 1.6;       /* Space between lines (1.6 = 160% of font size) */
+    color: var(--text-dark);           /* Default text color */
+    background-color: var(--background); /* Default page background */
+    
+    /* PREVENT HORIZONTAL SCROLL
+       Sometimes content can cause horizontal scrolling, this prevents it */
+    overflow-x: hidden;
+}
+
+/* HEADING ELEMENTS
+   Ensure headings have consistent styling */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;       /* Tighter line height for headings (looks better) */
+    font-weight: 700;       /* Bold weight (700 = bold, 400 = normal) */
+    color: var(--text-dark);
+}
+
+/* PARAGRAPH ELEMENTS */
+p {
+    margin-bottom: 1rem;    /* Space after paragraphs */
+}
+
+/* IMAGE ELEMENTS
+   Make all images responsive by default */
+img {
+    max-width: 100%;        /* Image will never be wider than its container */
+    height: auto;           /* Height scales proportionally with width */
+    display: block;         /* Remove extra space below images (default is inline) */
+}
+
+/* LIST ELEMENTS
+   Remove default bullet points and numbering */
+ul, ol {
+    list-style: none;       /* Remove bullets/numbers */
+}
+
+/* LINK ELEMENTS
+   Remove default link styling */
+a {
+    text-decoration: none;  /* Remove underline */
+    color: inherit;         /* Use the same color as parent element */
+    transition: color var(--transition-normal) ease; /* Smooth color change on hover */
+}
+
+/* BUTTON ELEMENTS
+   Inherit font from parent (buttons have different default fonts) */
+button {
+    font-family: inherit;   /* Use same font as body */
+    cursor: pointer;        /* Show pointer cursor on hover */
+}
+
+/* TODO: Adjust Base Font Size
+   If your design requires larger or smaller text, change the font-size
+   on the body element. This will affect all rem units throughout the site.
+   
+   HINT: 1rem = whatever you set body font-size to
+   EXAMPLE: If you set body font-size: 18px, then 2rem = 36px
+*/
+
+/* ==========================================
+   3. LAYOUT UTILITIES
+   ========================================== 
+   
+   WHAT ARE UTILITY CLASSES?
+   Utility classes are reusable styles that you can apply to any element.
+   Instead of writing the same CSS multiple times, create a utility class.
+   
+   EXAMPLE:
+   Instead of: div { max-width: 1200px; margin: 0 auto; }
+   Use: <div class="container">
+*/
+
+/* CONTAINER CLASS
+   Centers content and constrains maximum width
+   Used on every page to keep content from stretching too wide on large screens
+*/
+.container {
+    max-width: 1200px;      /* Content never wider than 1200px */
+    margin: 0 auto;         /* Center horizontally (0 top/bottom, auto left/right) */
+    padding: 0 20px;        /* Space on left/right (20px) to prevent touching edges */
+    width: 100%;            /* Take full width up to max-width */
+}
+
+/* TODO: Add More Utility Classes
+   Common utility classes you might need:
+   
+   HINT: Text alignment utilities
+   .text-center { text-align: center; }
+   .text-left { text-align: left; }
+   .text-right { text-align: right; }
+   
+   HINT: Display utilities
+   .hide { display: none; }
+   .show { display: block; }
+   
+   HINT: Margin utilities
+   .mt-1 { margin-top: 1rem; }
+   .mb-1 { margin-bottom: 1rem; }
+   
+   HINT: Flex utilities
+   .flex { display: flex; }
+   .flex-center { display: flex; justify-content: center; align-items: center; }
+*/
+
+/* SECTION SPACING
+   Standard spacing for page sections */
+.section {
+    padding: 4rem 0;        /* 4rem top and bottom, 0 left and right */
+}
+
+/* ==========================================
+   4. NAVIGATION BAR
+   ========================================== 
+   
+   WHAT IS A NAVIGATION BAR?
+   The navigation bar (navbar) appears at the top of every page.
+   It helps users navigate between different pages of your site.
+   
+   KEY FEATURES:
+   - Sticky positioning (stays at top when scrolling)
+   - Horizontal layout (logo on left, links on right)
+   - Responsive (collapses on mobile)
+*/
+
+.navbar {
+    /* BACKGROUND AND SHADOW
+       Background color and subtle shadow for depth */
+    background-color: var(--background);
+    box-shadow: var(--shadow-sm);
+    
+    /* PADDING
+       Vertical spacing inside the navbar */
+    padding: 1rem 0;
+    
+    /* Z-INDEX
+       Controls stacking order (higher number = on top)
+       Navbar needs high z-index to stay above other content */
+    z-index: 1000;          /* Very high number to stay on top */
+    
+    /* STICKY POSITIONING
+       TODO: Make navbar stick to top when scrolling
+       HINT: Add these properties:
+       position: sticky;
+       top: 0;
+       
+       EXPLANATION:
+       - position: sticky = Element scrolls normally until it hits the "top" value
+       - top: 0 = When navbar reaches 0px from top of viewport, it sticks
+       
+       EXAMPLE: Try scrolling the page - navbar should stay at top
+    */
+    position: sticky;
+    top: 0;
+}
+
+/* NAVBAR CONTAINER
+   Layout for navbar content (logo and links) */
+.navbar .container {
+    /* FLEXBOX LAYOUT
+       Display items in a row (horizontal) */
+    display: flex;
+    
+    /* JUSTIFY-CONTENT: space-between
+       Pushes items to opposite ends (logo left, links right) */
+    justify-content: space-between;
+    
+    /* ALIGN-ITEMS: center
+       Vertically centers items */
+    align-items: center;
+}
+
+/* LOGO SECTION */
+.logo h1 {
+    font-size: 1.5rem;      /* 24px (16px * 1.5) */
+    color: var(--primary-color);
+    font-weight: 700;       /* Bold */
+    margin: 0;              /* Remove default margin */
+}
+
+/* Make logo link not inherit color from parent */
+.logo a {
+    color: var(--primary-color);
+}
+
+.logo a:hover {
+    /* TODO: Add hover effect to logo
+       HINT: You could change opacity or add a subtle color change
+       EXAMPLE: opacity: 0.8; */
+}
+
+/* NAVIGATION LINKS CONTAINER
+   Contains all navigation links */
+.nav-links {
+    /* FLEXBOX for horizontal layout */
+    display: flex;
+    gap: 2rem;              /* Space between each link (2rem = 32px) */
+    align-items: center;    /* Vertically center links */
+    margin: 0;
+    padding: 0;
+}
+
+/* INDIVIDUAL NAVIGATION LINKS */
+.nav-links a {
+    color: var(--text-dark);
+    font-weight: 500;       /* Medium weight (between normal 400 and bold 700) */
+    font-size: 1rem;
+    
+    /* TRANSITION
+       Smooth color change when hovering */
+    transition: color var(--transition-normal) ease;
+    
+    /* PADDING
+       Makes clickable area larger (easier to click) */
+    padding: 0.5rem 0;
+}
+
+/* LINK HOVER STATE
+   What happens when you move mouse over a link */
+.nav-links a:hover {
+    color: var(--primary-color);
+    
+    /* TODO: Add more hover effects
+       HINT: You could add an underline or background
+       EXAMPLE: 
+       border-bottom: 2px solid var(--primary-color);
+       padding-bottom: 0.3rem;
+    */
+}
+
+/* LINK FOCUS STATE (ACCESSIBILITY)
+   When user navigates with keyboard (Tab key) */
+.nav-links a:focus {
+    /* OUTLINE
+       Visible border that shows which element has focus
+       Important for keyboard navigation accessibility */
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;    /* Space between element and outline */
+    border-radius: var(--radius-sm);
+}
+
+/* ACTIVE PAGE INDICATOR
+   Shows which page the user is currently on
+   Added by JavaScript in utils.js */
+.nav-links a[aria-current="page"] {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.3rem;
+}
+
+/* LOGIN BUTTON IN NAVBAR
+   Special styling for login/profile button */
+.btn-login {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--radius-md);
+    color: var(--primary-color);
+    transition: all var(--transition-normal) ease;
+}
+
+.btn-login:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* TODO: Create Mobile Menu Toggle
+   For mobile devices, you'll want a hamburger menu
+   
+   HINT: Add this HTML: <button id="mobile-menu-toggle" class="mobile-menu-btn">☰</button>
+   
+   Then add these styles:
+   .mobile-menu-btn {
+       display: none;
+       background: none;
+       border: none;
+       font-size: 1.5rem;
+       cursor: pointer;
+   }
+   
+   @media (max-width: 768px) {
+       .mobile-menu-btn { display: block; }
+       .nav-links { display: none; }
+       .nav-links.mobile-active { display: flex; flex-direction: column; }
+   }
+*/
+
+/* ==========================================
+   5. BUTTONS
+   ========================================== 
+   
+   WHAT ARE BUTTON STYLES?
+   Buttons are one of the most important interactive elements.
+   They need to be:
+   - Easy to see (good contrast)
+   - Easy to click (large enough)
+   - Clear about their purpose (hover effects)
+   
+   BUTTON TYPES IN THIS PROJECT:
+   - .btn = Base button style (required for all buttons)
+   - .btn-primary = Main action button (submit, create, etc.)
+   - .btn-secondary = Alternative action
+   - .btn-success = Positive action (accept, confirm)
+   - .btn-danger = Destructive action (delete, reject)
+   - .btn-small = Smaller button for tight spaces
+   - .btn-large = Larger button for emphasis
+*/
+
+/* BASE BUTTON STYLE
+   ALL buttons should have this class plus a modifier (.btn-primary, etc.) */
+.btn {
+    /* DISPLAY
+       inline-block allows width/height but keeps inline flow */
+    display: inline-block;
+    
+    /* PADDING
+       Space inside button (makes it bigger and easier to click) */
+    padding: 0.75rem 1.5rem;  /* 12px top/bottom, 24px left/right */
+    
+    /* BORDERS */
+    border: none;               /* Remove default button border */
+    border-radius: var(--radius-md); /* Rounded corners (6px) */
+    
+    /* TEXT */
+    font-weight: 600;           /* Semi-bold text */
+    font-size: 1rem;            /* Same as body text */
+    text-align: center;         /* Center text inside button */
+    
+    /* CURSOR
+       Shows hand pointer on hover (indicates it's clickable) */
+    cursor: pointer;
+    
+    /* TRANSITION
+       Smooth animation when properties change */
+    transition: all var(--transition-normal) ease;
+    
+    /* MISC */
+    text-decoration: none;      /* Remove underline if button is a link */
+    white-space: nowrap;        /* Prevent text from wrapping to new line */
+}
+
+/* REMOVE FOCUS OUTLINE (will add custom one)
+   Remove the default dotted outline */
+.btn:focus {
+    outline: none;
+}
+
+/* PRIMARY BUTTON (Main actions) */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+/* PRIMARY BUTTON HOVER STATE */
+.btn-primary:hover {
+    /* Darken the background slightly */
+    background-color: #1d4ed8;  /* Darker blue */
+    
+    /* TRANSFORM: translateY(-2px)
+       Moves button up 2px, creates "lift" effect */
+    transform: translateY(-2px);
+    
+    /* Larger shadow makes it look elevated */
+    box-shadow: var(--shadow-md);
+}
+
+/* PRIMARY BUTTON ACTIVE STATE (when clicked) */
+.btn-primary:active {
+    /* Move back down when clicked */
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+/* SECONDARY BUTTON (Alternative actions) */
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+    background-color: #6d28d9;  /* Darker purple */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+}
+
+/* SUCCESS BUTTON (Positive actions like "Accept") */
+.btn-success {
+    background-color: var(--success-color);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-success:hover {
+    background-color: #059669;  /* Darker green */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* DANGER BUTTON (Destructive actions like "Delete", "Reject") */
+.btn-danger {
+    background-color: var(--error-color);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;  /* Darker red */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* OUTLINE BUTTON (Less emphasis, borders only) */
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* SMALL BUTTON (For tight spaces) */
+.btn-small {
+    padding: 0.5rem 1rem;      /* Smaller padding */
+    font-size: 0.9rem;         /* Smaller text */
+}
+
+/* LARGE BUTTON (For emphasis) */
+.btn-large {
+    padding: 1rem 2rem;        /* Larger padding */
+    font-size: 1.1rem;         /* Larger text */
+    font-weight: 700;          /* Bolder text */
+}
+
+/* FULL WIDTH BUTTON (Takes full width of container) */
+.btn-full {
+    width: 100%;
+    display: block;
+}
+
+/* DISABLED BUTTON STATE (Not clickable) */
+.btn:disabled,
+.btn.disabled {
+    opacity: 0.5;              /* Faded appearance */
+    cursor: not-allowed;       /* Shows "not allowed" cursor */
+    pointer-events: none;      /* Prevents clicking */
+}
+
+/* BUTTON FOCUS STATE (ACCESSIBILITY)
+   Custom focus outline for keyboard navigation */
+.btn:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* TODO: Create Custom Button Variants
+   You can create more button styles based on your design needs
+   
+   HINT: Copy the .btn-primary pattern and change colors
+   
+   EXAMPLE: Info button (for informational actions)
+   .btn-info {
+       background-color: var(--info-color);
+       color: white;
+   }
+   .btn-info:hover {
+       background-color: #2563eb;
+   }
+*/
+
+/* BUTTON LINK (Looks like link, acts like button) */
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    text-decoration: underline;
+    padding: 0;
+    cursor: pointer;
+}
+
+.btn-link:hover {
+    color: var(--secondary-color);
+}
+
+/* ==========================================
+   6. LANDING PAGE STYLES (index.html)
+   ========================================== 
+   
+   LANDING PAGE SECTIONS:
+   1. Hero Section - Eye-catching introduction
+   2. Value Propositions - Benefits for students and companies
+   3. How It Works - Step-by-step process
+   4. Footer - Links and copyright
+*/
+
+/* ==========================================
+   HERO SECTION
+   ========================================== 
+   
+   WHAT IS A HERO SECTION?
+   The hero section is the first thing visitors see.
+   It should:
+   - Grab attention immediately
+   - Communicate your value proposition
+   - Include a clear call-to-action (CTA)
+   
+   DESIGN TIPS:
+   - Use contrasting colors
+   - Keep text concise and clear
+   - Make CTA buttons prominent
+*/
+
+.hero {
+    /* BACKGROUND
+       Uses a gradient from primary to secondary color */
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    /* EXPLANATION:
+       - linear-gradient = smooth color transition
+       - 135deg = angle of gradient (diagonal from top-left to bottom-right)
+       - 0% to 100% = start and end points
+    */
+    
+    /* TEXT COLOR */
+    color: white;
+    
+    /* PADDING
+       Large padding to create spacious feel */
+    padding: 6rem 0;        /* 96px top/bottom, 0 left/right */
+    
+    /* TEXT ALIGNMENT */
+    text-align: center;
+    
+    /* TODO: Add Background Image Instead of Gradient
+       HINT: You can use a background image instead of gradient
+       EXAMPLE:
+       background-image: url('../images/hero-bg.jpg');
+       background-size: cover;
+       background-position: center;
+       
+       NOTE: Make sure to keep text readable by:
+       - Using semi-transparent overlay
+       - Choosing appropriate image
+       - Adding text shadow if needed
+    */
+}
+
+/* HERO HEADLINE */
+.hero h2 {
+    font-size: 2.5rem;      /* 40px */
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: white;           /* Override default heading color */
+    
+    /* TEXT SHADOW
+       Subtle shadow makes text easier to read on gradient background */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* HERO DESCRIPTION */
+.hero-description {
+    font-size: 1.25rem;     /* 20px - Larger than body text */
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    
+    /* MAX-WIDTH
+       Constrains width for better readability */
+    max-width: 600px;
+    
+    /* CENTERING
+       Horizontal centering with auto margins */
+    margin-left: auto;
+    margin-right: auto;
+    
+    /* OPACITY
+       Slightly transparent for visual hierarchy */
+    opacity: 0.95;
+}
+
+/* CALL-TO-ACTION BUTTONS CONTAINER */
+.cta-buttons {
+    /* FLEXBOX
+       Arranges buttons horizontally */
+    display: flex;
+    gap: 1rem;              /* Space between buttons */
+    justify-content: center; /* Center buttons horizontally */
+    flex-wrap: wrap;        /* Wrap to new line if not enough space */
+    
+    /* MARGIN */
+    margin-top: 2rem;
+}
+
+/* TODO: Enhance Hero Section
+   Ideas to make hero section more engaging:
+   
+   1. Add Animation:
+   .hero h2 {
+       animation: fadeInUp 1s ease;
+   }
+   
+   2. Add Background Pattern:
+   .hero::before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       background: url('pattern.svg');
+       opacity: 0.1;
+   }
+   
+   3. Add Scroll Indicator:
+   .scroll-indicator {
+       position: absolute;
+       bottom: 2rem;
+       left: 50%;
+       transform: translateX(-50%);
+       animation: bounce 2s infinite;
+   }
+*/
+
+/* ==========================================
+   VALUE PROPOSITIONS SECTION
+   ========================================== 
+   
+   WHAT IS THIS SECTION?
+   Shows benefits for both target audiences (students and companies)
+   Uses a two-column layout to compare side-by-side
+*/
+
+.value-propositions {
+    padding: 4rem 0;
+    background-color: var(--background-alt);
+}
+
+/* SECTION HEADING */
+.value-propositions h2 {
+    text-align: center;
+    font-size: 2rem;        /* 32px */
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+}
+
+/* TWO-COLUMN LAYOUT */
+.two-column {
+    /* GRID LAYOUT
+       Creates two equal-width columns */
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* 1fr = one fraction of available space */
+    /* EXPLANATION:
+       - display: grid = Use CSS Grid layout system
+       - grid-template-columns: 1fr 1fr = Two columns, each takes equal space
+       - Alternative: grid-template-columns: repeat(2, 1fr)
+    */
+    
+    gap: 3rem;              /* Space between columns */
+}
+
+/* INDIVIDUAL COLUMN */
+.column {
+    /* TODO: Add styling to columns
+       HINT: You might want to add padding, background, or borders
+       EXAMPLE:
+       padding: 2rem;
+       background: white;
+       border-radius: var(--radius-lg);
+       box-shadow: var(--shadow-sm);
+    */
+}
+
+/* COLUMN HEADINGS */
+.column h3 {
+    font-size: 1.5rem;      /* 24px */
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+/* BENEFITS LIST */
+.benefits-list {
+    /* FLEXBOX for vertical stacking */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 1.5rem;            /* Space between items */
+}
+
+/* INDIVIDUAL BENEFIT ITEM */
+.benefits-list li {
+    padding-left: 1.5rem;   /* Space for custom bullet point */
+    position: relative;     /* Needed for positioning ::before element */
+    line-height: 1.6;
+}
+
+/* CUSTOM BULLET POINT
+   ::before creates a pseudo-element before the content */
+.benefits-list li::before {
+    content: "✓";           /* Checkmark character */
+    /* POSITIONING
+       Absolute positioning relative to parent (li) */
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+    
+    /* TODO: Use Icon Instead of Checkmark
+       HINT: You can use icon fonts or unicode characters
+       EXAMPLE with Unicode:
+       content: "\2713";  (checkmark)
+       content: "\2022";  (bullet point)
+       content: "\27A4";  (arrow)
+       
+       EXAMPLE with Icon Font (if using Font Awesome):
+       content: "\f00c";
+       font-family: "Font Awesome 5 Free";
+    */
+}
+
+/* BENEFIT ITEM STRONG TEXT */
+.benefits-list li strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* ==========================================
+   HOW IT WORKS SECTION
+   ========================================== 
+   
+   WHAT IS THIS SECTION?
+   Explains the platform's process in 4 clear steps
+   Uses a visual timeline or numbered cards
+*/
+
+.how-it-works {
+    padding: 4rem 0;
+    background-color: var(--background);
+}
+
+/* SECTION HEADING */
+.how-it-works h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+}
+
+/* STEPS CONTAINER */
+.steps {
+    /* GRID LAYOUT
+       Creates responsive columns that adjust based on available space */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* EXPLANATION:
+       - repeat(auto-fit, ...) = Create as many columns as fit
+       - minmax(250px, 1fr) = Each column is at least 250px, max 1fr
+       - Result: Columns wrap to new line when screen is too narrow
+    */
+    
+    gap: 2rem;
+    
+    /* TODO: Create Timeline Layout Instead of Grid
+       HINT: For a timeline effect, use flex with a connector line
+       EXAMPLE:
+       display: flex;
+       position: relative;
+       
+       .steps::before {
+           content: '';
+           position: absolute;
+           top: 25px;
+           left: 0;
+           right: 0;
+           height: 2px;
+           background: var(--border-color);
+           z-index: -1;
+       }
+    */
+}
+
+/* INDIVIDUAL STEP CARD */
+.step {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--background);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    
+    /* TRANSITION for hover effect */
+    transition: transform var(--transition-normal) ease,
+                box-shadow var(--transition-normal) ease;
+}
+
+/* STEP HOVER EFFECT */
+.step:hover {
+    transform: translateY(-4px);  /* Lift up slightly */
+    box-shadow: var(--shadow-md);
+}
+
+/* STEP NUMBER */
+.step-number {
+    /* CIRCULAR BADGE for number */
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--radius-full);  /* 9999px makes it perfectly round */
+    
+    /* TEXT CENTERING
+       line-height equal to height centers text vertically */
+    line-height: 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    
+    /* TODO: Make Step Numbers More Interesting
+       HINT: You could add gradients, shadows, or animations
+       EXAMPLE:
+       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+       box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+    */
+}
+
+/* STEP TITLE */
+.step h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+/* STEP DESCRIPTION */
+.step p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* ==========================================
+   7. DASHBOARD COMMON STYLES
+   ========================================== 
+   
+   These styles are shared between Student Dashboard and Company Dashboard
+   They create the basic layout and common components
+*/
+
+/* DASHBOARD MAIN CONTAINER */
+.dashboard-main {
+    min-height: calc(100vh - 200px);  /* At least full viewport height minus nav/footer */
+    /* EXPLANATION:
+       - 100vh = 100% of viewport height
+       - calc() = Perform calculation
+       - Subtracting 200px accounts for navbar and footer
+       - min-height ensures content area is always tall enough
+    */
+    
+    padding: 2rem 0;
+    background-color: var(--background-alt);
+}
+
+/* DASHBOARD HEADER (Welcome section with stats) */
+.dashboard-header {
+    background-color: var(--background);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+    
+    /* TODO: Add Gradient Background to Header
+       HINT: Similar to hero section
+       EXAMPLE:
+       background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    */
+}
+
+/* WELCOME SECTION */
+.welcome-section {
+    margin-bottom: 1.5rem;
+}
+
+.welcome-section h2 {
+    font-size: 1.75rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+/* STUDENT/USER NAME HIGHLIGHT */
+.student-name {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* PROFILE PICTURE PLACEHOLDER */
+.profile-pic {
+    /* CIRCULAR IMAGE CONTAINER */
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    border-radius: var(--radius-full);
+    display: inline-block;
+    margin-top: 0.5rem;
+    
+    /* FLEXBOX for centering initials if you add them */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    
+    /* TODO: Add Real Profile Image
+       HINT: Use background-image or <img> tag inside
+       EXAMPLE with background-image:
+       background-image: url('../images/profile.jpg');
+       background-size: cover;
+       background-position: center;
+    */
+}
+
+/* QUICK STATS CONTAINER */
+.quick-stats {
+    /* FLEXBOX LAYOUT
+       Display stat cards in a row */
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-around;  /* Distribute evenly */
+    flex-wrap: wrap;                /* Wrap on small screens */
+}
+
+/* INDIVIDUAL STAT CARD */
+.stat-card {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--background-alt);
+    border-radius: var(--radius-lg);
+    flex: 1;                /* Grow to fill available space */
+    min-width: 120px;       /* Minimum width before wrapping */
+    
+    /* TRANSITION for subtle hover effect */
+    transition: transform var(--transition-normal) ease,
+                box-shadow var(--transition-normal) ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* STAT NUMBER (Large number display) */
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+/* STAT LABEL (Description under number) */
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-transform: capitalize;
+}
+
+/* DASHBOARD GRID LAYOUT
+   Two-column layout: main content + sidebar */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;  /* Main content is 2x wider than sidebar */
+    /* EXPLANATION:
+       - 2fr = Two fractions of available space
+       - 1fr = One fraction of available space
+       - Result: Main content takes 66%, sidebar takes 33%
+    */
+    
+    gap: 2rem;
+    align-items: start;     /* Align items to top of grid */
+}
+
+/* MAIN CONTENT AREA (Left side) */
+.main-content {
+    /* All styles for content inside this area */
+}
+
+/* SIDEBAR (Right side) */
+.sidebar {
+    /* STICKY POSITIONING
+       Sidebar stays visible while scrolling main content */
+    position: sticky;
+    top: 90px;              /* 90px from top (below navbar) */
+    
+    /* TODO: Adjust top value if your navbar height is different
+       HINT: top = navbar height + desired spacing
+    */
+}
+
+/* ==========================================
+   8. STUDENT DASHBOARD SPECIFIC STYLES
+   ========================================== */
+
+/* ACTIVE PROJECTS SECTION */
+.active-projects {
+    background-color: var(--background);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.active-projects h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+/* PROJECT CARD */
+.project-card {
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    background-color: var(--background);
+    
+    /* TRANSITION for hover effect */
+    transition: transform var(--transition-normal) ease,
+                box-shadow var(--transition-normal) ease,
+                border-color var(--transition-normal) ease;
+}
+
+/* PROJECT CARD HOVER */
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+    border-color: var(--primary-color);
+}
+
+/* ACTIVE PROJECT CARD (Currently working on) */
+.project-card.active {
+    border-color: var(--success-color);
+    border-width: 2px;
+    
+    /* Optional: Add subtle background tint */
+    background-color: rgba(16, 185, 129, 0.02);
+}
+
+/* PROJECT HEADER */
+.project-header {
+    margin-bottom: 1rem;
+}
+
+.project-header h4 {
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+/* COMPANY NAME */
+.company-name {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* PROGRESS BAR CONTAINER */
+.progress-container {
+    margin: 1rem 0;
+}
+
+.progress-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* PROGRESS BAR ELEMENT
+   The <progress> HTML element creates a progress bar */
+progress {
+    width: 100%;
+    height: 20px;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    
+    /* Remove default styling */
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+}
+
+/* PROGRESS BAR BACKGROUND (Chrome/Safari) */
+progress::-webkit-progress-bar {
+    background-color: var(--background-alt);
+    border-radius: var(--radius-full);
+}
+
+/* PROGRESS BAR FILL (Chrome/Safari) */
+progress::-webkit-progress-value {
+    background-color: var(--primary-color);
+    border-radius: var(--radius-full);
+    
+    /* TRANSITION for smooth progress updates */
+    transition: width 0.5s ease;
+    
+    /* TODO: Add Gradient to Progress Bar
+       HINT: Use linear-gradient for more visual interest
+       EXAMPLE:
+       background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    */
+}
+
+/* PROGRESS BAR FILL (Firefox) */
+progress::-moz-progress-bar {
+    background-color: var(--primary-color);
+    border-radius: var(--radius-full);
+}
+
+/* PROJECT METADATA (Deadline, status, etc.) */
+.project-meta {
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.deadline {
+    /* TODO: Add icon before deadline text
+       HINT: Use ::before pseudo-element
+       EXAMPLE:
+       &::before {
+           content: "⏰ ";
+       }
+    */
+}
+
+/* AVAILABLE OPPORTUNITIES SECTION */
+.available-opportunities {
+    background-color: var(--background);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.available-opportunities h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+/* OPPORTUNITIES GRID */
+.opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    /* EXPLANATION:
+       - auto-fill = Create as many columns as fit
+       - minmax(280px, 1fr) = Each card is at least 280px, max 1fr
+       - Cards automatically wrap to new rows
+    */
+    gap: 1.5rem;
+}
+
+/* OPPORTUNITY CARD */
+.opportunity-card {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    background-color: var(--background);
+    
+    /* TRANSITION for hover effect */
+    transition: transform var(--transition-normal) ease,
+                box-shadow var(--transition-normal) ease;
+    
+    /* FLEXBOX for vertical layout */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.opportunity-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+/* COMPANY LOGO (Small version in cards) */
+.company-logo,
+.company-logo-small {
+    width: 50px;
+    height: 50px;
+    background-color: var(--background-alt);
+    border-radius: var(--radius-lg);
+    
+    /* TODO: Add actual logo images
+       HINT: Use background-image or <img> tag
+    */
+}
+
+.opportunity-card h4 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.opportunity-card .company {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+
+
+/* SKILLS TAGS */
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* INDIVIDUAL SKILL TAG/BADGE */
+.skill-tag {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 500;
+    
+    /* TODO: Create Different Colors for Different Skills
+       HINT: Use different classes for different skill types
+       EXAMPLE:
+       .skill-tag.design { background-color: #ec4899; }
+       .skill-tag.frontend { background-color: #3b82f6; }
+       .skill-tag.backend { background-color: #10b981; }
+    */
+}
+
+/* OPPORTUNITY METADATA (Duration, compensation) */
+.opportunity-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.opportunity-meta .duration {
+    color: var(--text-light);
+}
+
+.compensation {
+    color: var(--success-color);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* PROFILE SUMMARY SIDEBAR */
+.profile-summary {
+    background-color: var(--background);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.profile-summary h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+/* PROFILE INFO */
+.profile-info {
+    margin-bottom: 1.5rem;
+}
+
+.profile-info .name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.profile-info .major {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* SKILLS SECTION IN SIDEBAR */
+.skills-section {
+    margin-bottom: 1.5rem;
+}
+
+.skills-section h4 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+}
+
+/* PORTFOLIO LINKS */
+.portfolio-links {
+    margin: 1.5rem 0;
+}
+
+.portfolio-links h4 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+}
+
+.portfolio-link {
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    
+    /* TRANSITION */
+    transition: all var(--transition-normal) ease;
+}
+
+.portfolio-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateX(4px);
+}
+
+/* ==========================================
+   9. COMPANY DASHBOARD SPECIFIC STYLES
+   ========================================== */
+
+/* COMPANY HEADER SPECIFIC */
+.company-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.company-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* LARGER COMPANY LOGO */
+.company-logo-large {
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary-color);
+    border-radius: var(--radius-lg);
+    
+    /* TODO: Add company logo image */
+}
+
+.company-tagline {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+/* POST PROJECT SECTION */
+.post-project-section {
+    background-color: var(--background);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.post-project-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+/* ==========================================
+   FORM STYLES
+   ========================================== 
+   
+   Forms are crucial for user input
+   Good form design is:
+   - Clear (labels easy to understand)
+   - Accessible (keyboard navigable, screen reader friendly)
+   - User-friendly (validation, helpful errors)
+*/
+
+.project-form {
+    max-width: 100%;
+}
+
+/* FORM GROUP (Label + Input pair) */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* FORM LABELS */
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+/* REQUIRED FIELD INDICATOR */
+.required {
+    color: var(--error-color);
+    font-weight: 700;
+}
+
+/* TEXT INPUTS, TEXTAREAS, SELECTS */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
+    /* SIZE */
+    width: 100%;
+    padding: 0.75rem;
+    
+    /* BORDERS */
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    
+    /* TEXT */
+    font-size: 1rem;
+    font-family: inherit;    /* Use same font as body */
+    color: var(--text-dark);
+    
+    /* BACKGROUND */
+    background-color: var(--background);
+    
+    /* TRANSITION for focus effect */
+    transition: border-color var(--transition-normal) ease,
+                box-shadow var(--transition-normal) ease;
+}
+
+/* INPUT FOCUS STATE (When user clicks in field) */
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary-color);
+    outline: none;  /* Remove default browser outline */
+    
+    /* ADD CUSTOM FOCUS EFFECT */
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* TEXTAREA SPECIFIC STYLES */
+textarea {
+    resize: vertical;       /* Allow vertical resizing only */
+    min-height: 120px;      /* Minimum height */
+    line-height: 1.6;
+}
+
+/* SELECT DROPDOWN */
+select {
+    cursor: pointer;
+    
+    /* Custom arrow (remove default) */
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 12px;
+    padding-right: 2.5rem;  /* Space for arrow */
+}
+
+/* INPUT PLACEHOLDER TEXT */
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-light);
+    opacity: 0.6;
+}
+
+/* INVALID INPUT STATE (For validation) */
+input:invalid:not(:focus),
+textarea:invalid:not(:focus),
+select:invalid:not(:focus) {
+    /* Only show red border if user has interacted */
+}
+
+input.error,
+textarea.error,
+select.error {
+    border-color: var(--error-color);
+}
+
+input.success,
+textarea.success,
+select.success {
+    border-color: var(--success-color);
+}
+
+/* CHECKBOXES AND RADIOS CONTAINER */
+.skills-checkboxes,
+.filter-checkboxes,
+.filter-radios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* CHECKBOX/RADIO LABEL */
+.checkbox-label,
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;      /* Prevent text selection when clicking */
+    font-size: 0.95rem;
+}
+
+.checkbox-label input[type="checkbox"],
+.radio-label input[type="radio"] {
+    width: auto;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    
+    /* SIZE */
+    width: 18px;
+    height: 18px;
+    
+    /* TODO: Create Custom Checkbox/Radio Styles
+       HINT: Hide default and create custom with ::before
+       This is advanced CSS but creates better-looking controls
+       
+       EXAMPLE:
+       appearance: none;
+       border: 2px solid var(--border-color);
+       border-radius: 4px;
+       position: relative;
+       
+       &:checked::before {
+           content: '✓';
+           position: absolute;
+           color: white;
+       }
+    */
+}
+
+.checkbox-label:hover,
+.radio-label:hover {
+    color: var(--primary-color);
+}
+
+/* FORM ROW (Two inputs side by side) */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* FORM VALIDATION MESSAGES */
+.form-error {
+    color: var(--error-color);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    display: none;  /* Hide by default, show with JavaScript */
+}
+
+.form-success {
+    color: var(--success-color);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+/* POSTED PROJECTS SECTION */
+.posted-projects {
+    background-color: var(--background);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.posted-projects h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+/* POSTED PROJECT CARD (Different layout than opportunity card) */
+.project-card.posted {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* PROJECT STATUS BADGE */
+.project-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.project-status.active {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.project-status.closed {
+    background-color: var(--text-light);
+    color: white;
+}
+
+.project-status.pending {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+/* PROJECT INFO IN POSTED CARD */
+.project-info {
+    flex: 1;
+}
+
+.applications-count {
+    font-size: 1rem;
+    color: var(--text-dark);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.applications-count strong {
+    color: var(--primary-color);
+}
+
+.posted-date {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* RECENT APPLICATIONS SECTION (Sidebar) */
+.recent-applications {
+    background-color: var(--background);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.recent-applications h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+/* APPLICATION CARD */
+.application-card {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    background-color: var(--background);
+    
+    transition: transform var(--transition-normal) ease,
+                box-shadow var(--transition-normal) ease;
+}
+
+.application-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* APPLICANT INFO */
+.applicant-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* APPLICANT AVATAR */
+.applicant-avatar {
+    width: 50px;
+    height: 50px;
+    background-color: var(--secondary-color);
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+    
+    /* Center initials if you add them */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.applicant-info h4 {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin: 0 0 0.25rem 0;
+}
+
+.applied-to {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+/* APPLICANT SKILLS */
+.applicant-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.application-date {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+/* APPLICATION ACTIONS (Buttons) */
+.application-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* COMPANY GRID (Different proportions than student dashboard) */
+.company-grid {
+    grid-template-columns: 1.5fr 1fr;
+}
+
+/* ==========================================
+   10. PROJECT LISTINGS PAGE STYLES (projects.html)
+   ========================================== */
+
+.projects-main {
+    background-color: var(--background-alt);
+    min-height: calc(100vh - 200px);
+    padding: 2rem 0;
+}
+
+/* PAGE HEADER */
+.page-header {
+    background-color: var(--background);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.page-header h2 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.page-description {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.project-count {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* PROJECTS LAYOUT (Sidebar + Listings) */
+.projects-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* ==========================================
+   FILTERS SIDEBAR
+   ========================================== */
+
+.filters-sidebar {
+    background-color: var(--background);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    
+    /* STICKY POSITIONING
+       Sidebar stays visible while scrolling */
+    position: sticky;
+    top: 90px;  /* Adjust based on navbar height */
+}
+
+.filters-sidebar h3 {
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+/* FILTER GROUP */
+.filter-group {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.filter-group:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.filter-group h4 {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+/* SEARCH INPUT IN FILTERS */
+.filter-group input[type="search"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+}
+
+/* COMPENSATION RANGE INPUTS */
+.compensation-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.compensation-inputs input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+}
+
+.range-separator {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* APPLY FILTERS BUTTON */
+.btn-apply-filters {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* CLEAR FILTERS BUTTON */
+.btn-clear-filters {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+/* ==========================================
+   PROJECT LISTINGS GRID
+   ========================================== */
+
+.projects-listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+/* PROJECT LISTING CARD */
+.project-listing-card {
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    
+    /* FLEXBOX for vertical layout */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    /* TRANSITION for hover */
+    transition: transform var(--transition-normal) ease,
+                box-shadow var(--transition-normal) ease,
+                border-color var(--transition-normal) ease;
+}
+
+.project-listing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+/* CARD HEADER (Logo + Title) */
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.card-header h3 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+}
+
+
+
+/* PROJECT METADATA (Duration + Compensation) */
+.project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+.project-meta .duration {
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* BUTTON IN CARD */
+.project-listing-card .btn {
+    width: 100%;
+    margin-top: auto;  /* Push button to bottom */
+}
+
+/* ==========================================
+   PAGINATION
+   ========================================== 
+   
+   WHAT IS PAGINATION?
+   Pagination splits content across multiple pages
+   Users can navigate between pages
+   
+   NOTE: In this project, pagination is visual only (doesn't work)
+   In real application, you'd need JavaScript or backend
+*/
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    padding: 2rem 0;
+}
+
+/* PREVIOUS/NEXT BUTTONS */
+.pagination-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary-color);
+    background-color: var(--background);
+    color: var(--primary-color);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-normal) ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* PAGE NUMBERS CONTAINER */
+.page-numbers {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* PAGE NUMBER BUTTON */
+.page-number {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--border-color);
+    background-color: var(--background);
+    color: var(--text-dark);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    
+    /* CENTER NUMBER */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    transition: all var(--transition-normal) ease;
+}
+
+.page-number:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* ACTIVE PAGE (Current page) */
+.page-number.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    cursor: default;
+}
+
+/* PAGE ELLIPSIS (...) */
+.page-ellipsis {
+    display: flex;
+    align-items: center;
+    color: var(--text-light);
+    padding: 0 0.5rem;
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== 
+   
+   Footer appears at bottom of every page
+   Contains links and copyright information
+*/
+
+.site-footer {
+    background-color: var(--text-dark);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+/* FOOTER LINKS */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: white;
+    font-size: 0.9rem;
+    transition: color var(--transition-normal) ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* COPYRIGHT TEXT */
+.copyright {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin: 0;
+}
+
+/* TODO: Enhance Footer
+   Ideas for better footer:
+   
+   1. Add social media icons
+   2. Add newsletter signup form
+   3. Add multiple footer columns
+   4. Add footer navigation sections
+   
+   EXAMPLE with columns:
+   .footer-content {
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
+       gap: 2rem;
+       text-align: left;
+   }
+*/
+
+/* ==========================================
+   11. RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================== 
+   
+   WHAT ARE MEDIA QUERIES?
+   Media queries apply different styles based on screen size
+   This makes your site work on phones, tablets, and desktops
+   
+   COMMON BREAKPOINTS:
+   - Mobile: < 480px
+   - Tablet: 481px - 768px
+   - Desktop: 769px - 1200px
+   - Large Desktop: > 1200px
+   
+   HOW TO USE:
+   @media (max-width: 768px) {
+       // Styles apply when screen is 768px or smaller
+   }
+   
+   @media (min-width: 769px) {
+       // Styles apply when screen is 769px or larger
+   }
+*/
+
+/* TABLET AND BELOW (max-width: 968px) */
+@media (max-width: 968px) {
+    /* NAVIGATION
+       Stack nav links vertically on smaller screens */
+    .navbar .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* HERO SECTION
+       Reduce padding and font sizes */
+    .hero {
+        padding: 4rem 0;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    /* TWO-COLUMN LAYOUTS
+       Stack columns vertically */
+    .two-column,
+    .dashboard-grid,
+    .company-grid,
+    .projects-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /* SIDEBAR
+       Remove sticky positioning on mobile */
+    .sidebar,
+    .filters-sidebar {
+        position: static;
+    }
+    
+    /* COMPANY HEADER
+       Stack company info vertically */
+    .company-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    /* FORM ROWS
+       Stack form inputs vertically */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    /* STEPS SECTION
+       Single column on tablet */
+    .steps {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* TABLET SPECIFIC (max-width: 768px) */
+@media (max-width: 768px) {
+    /* CONTAINER
+       Reduce side padding */
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* QUICK STATS
+       Stack stat cards vertically */
+    .quick-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .stat-card {
+        flex: none;
+        width: 100%;
+    }
+    
+    /* OPPORTUNITIES GRID
+       Single column */
+    .opportunities-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* PROJECT LISTINGS
+       Single column */
+    .projects-listings {
+        grid-template-columns: 1fr;
+    }
+    
+    /* POSTED PROJECT CARDS
+       Stack content vertically */
+    .project-card.posted {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    /* CTA BUTTONS
+       Stack buttons vertically */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+    }
+    
+    /* PAGINATION
+       Wrap pagination items */
+    .pagination {
+        flex-wrap: wrap;
+    }
+    
+    .page-numbers {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+}
+
+/* MOBILE (max-width: 480px) */
+@media (max-width: 480px) {
+    /* HERO SECTION
+       Further reduce sizes */
+    .hero {
+        padding: 3rem 0;
+    }
+    
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+    }
+    
+    /* PAGE HEADER */
+    .page-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    /* DASHBOARD HEADER */
+    .dashboard-header {
+        padding: 1.5rem;
+    }
+    
+    /* SECTION HEADINGS */
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    /* CARDS */
+    .project-card,
+    .opportunity-card,
+    .application-card {
+        padding: 1rem;
+    }
+    
+    /* BUTTONS
+       Make buttons full width on mobile */
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .action-buttons .btn {
+        width: 100%;
+    }
+    
+    /* FOOTER LINKS
+       Stack vertically */
+    .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    /* HIDE SOME PAGE NUMBERS ON MOBILE */
+    .pagination .page-number:nth-child(n+4):nth-child(-n+6) {
+        display: none;
+    }
+}
+
+/* LARGE DESKTOP (min-width: 1400px) */
+@media (min-width: 1400px) {
+    /* CONTAINER
+       Increase max width for large screens */
+    .container {
+        max-width: 1400px;
+    }
+    
+    /* INCREASE FONT SIZES */
+    .hero h2 {
+        font-size: 3rem;
+    }
+    
+    /* MORE COLUMNS FOR GRIDS */
+    .opportunities-grid,
+    .projects-listings {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+/* TODO: Test Responsive Design
+   HINT: Use browser DevTools to test different screen sizes
+   
+   In Chrome:
+   1. Right-click page → Inspect
+   2. Click device toolbar icon (phone/tablet icon)
+   3. Select different devices from dropdown
+   
+   Test on these sizes:
+   - iPhone SE (375px)
+   - iPad (768px)
+   - Desktop (1200px)
+*/
+
+/* ==========================================
+   12. ACCESSIBILITY ENHANCEMENTS
+   ========================================== 
+   
+   WHAT IS WEB ACCESSIBILITY?
+   Making websites usable by everyone, including people with:
+   - Visual impairments (blind, low vision, color blind)
+   - Motor disabilities (can't use mouse)
+   - Cognitive disabilities
+   - Hearing impairments
+   
+   WHY IS IT IMPORTANT?
+   - Legal requirement (ADA compliance)
+   - Ethical responsibility
+   - Better UX for everyone
+   - Improves SEO
+*/
+
+/* FOCUS STYLES
+   Visible indication when element has keyboard focus */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* FOCUS-VISIBLE (Only show outline for keyboard navigation)
+   Removes outline when clicking with mouse */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+    outline: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* SKIP TO MAIN CONTENT LINK
+   Allows keyboard users to skip navigation
+   Hidden until focused */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* HIGH CONTRAST MODE SUPPORT */
+@media (prefers-contrast: high) {
+    /* Increase contrast for users who need it */
+    :root {
+        --primary-color: #0047ab;
+        --text-dark: #000000;
+        --border-color: #000000;
+    }
+}
+
+/* REDUCED MOTION MODE
+   Respect user's preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    /* Remove all animations */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* KEYBOARD NAVIGATION HELPER
+   Show focus indicators only for keyboard users */
+body.keyboard-navigation *:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* SCREEN READER ONLY TEXT
+   Hide visually but keep for screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* TODO: Test Accessibility
+   TOOLS TO USE:
+   1. WAVE (Web Accessibility Evaluation Tool)
+   2. axe DevTools (Browser extension)
+   3. Lighthouse (Built into Chrome)
+   4. Keyboard navigation testing (try using only Tab/Enter)
+   5. Screen reader testing (NVDA on Windows, VoiceOver on Mac)
+*/
+
+/* ==========================================
+   13. PRINT STYLES
+   ========================================== 
+   
+   WHAT ARE PRINT STYLES?
+   Special CSS that applies only when printing
+   Optimizes page for paper output
+*/
+
+@media print {
+    /* HIDE UNNECESSARY ELEMENTS */
+    .navbar,
+    .site-footer,
+    .btn,
+    .pagination,
+    .filters-sidebar {
+        display: none;
+    }
+    
+    /* RESET LAYOUT FOR PRINT */
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background: #fff;
+    }
+    
+    /* ENSURE BLACK TEXT */
+    * {
+        color: #000 !important;
+        background: transparent !important;
+    }
+    
+    /* PAGE BREAKS */
+    h1, h2, h3 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+    
+    /* SHOW LINK URLS IN PRINT
+       Displays URL after link text */
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.9em;
+        color: #666;
+    }
+}
+
+/* ==========================================
+   14. UTILITY CLASSES (OPTIONAL)
+   ========================================== 
+   
+   These are optional helper classes you can use
+   Comment out or customize as needed
+*/
+
+/* TEXT ALIGNMENT */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* DISPLAY */
+.hide { display: none; }
+.show { display: block; }
+.invisible { visibility: hidden; }
+
+/* MARGINS */
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* PADDING */
+.p-1 { padding: 1rem; }
+.p-2 { padding: 2rem; }
+.px-1 { padding-left: 1rem; padding-right: 1rem; }
+.py-1 { padding-top: 1rem; padding-bottom: 1rem; }
+
+/* FLEXBOX */
+.flex { display: flex; }
+.flex-column { flex-direction: column; }
+.flex-center { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+.flex-between { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+/* TEXT STYLES */
+.bold { font-weight: 700; }
+.italic { font-style: italic; }
+.uppercase { text-transform: uppercase; }
+.capitalize { text-transform: capitalize; }
+
+/* ==========================================
+   END OF STYLESHEET
+   ========================================== 
+   
+   CONGRATULATIONS! 🎉
+   You've reached the end of the stylesheet.
+   
+   NEXT STEPS:
+   1. Customize color variables at the top
+   2. Fill in TODO sections with your own styles
+   3. Test on different screen sizes
+   4. Test keyboard navigation
+   5. Validate your HTML and CSS
+   6. Get feedback from teammates
+   
+   REMEMBER:
+   - Comment your code
+   - Keep styles organized
+   - Test thoroughly
+   - Ask for help when stuck
+   
+   RESOURCES:
+   - MDN Web Docs: https://developer.mozilla.org/
+   - CSS Tricks: https://css-tricks.com/
+   - Can I Use: https://caniuse.com/
+   
+   Good luck with your project! 🚀
+   ========================================== */
