@@ -22,6 +22,8 @@ implements. (Refer to BMC document)
 ## Individual Contributions Sample
 ### Matthew Thetford
 - Hosted Github Repository
+- Created initial index.html
+- Created initial color scheme
 ### [Team Member 2 Name]
 -
 ### [Team Member 3 Name]
