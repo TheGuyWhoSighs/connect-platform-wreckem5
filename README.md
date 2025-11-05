@@ -3,8 +3,8 @@
 ## Team Name/Number: Wreckem 5
 ## Team Members
 - Matthew Thetford - TheGuyWhoSighs
-- [Name] - [GitHub Username]
-- [Name] - [GitHub Username]
+- Dillon Tran - red-the-rock
+- Md Tajrian Taher - ttjim
 - [Name] - [GitHub Username]
 ## Project Description
 Brief description of the Connect platform and what this project
@@ -24,9 +24,9 @@ implements. (Refer to BMC document)
 - Hosted Github Repository
 - Created initial index.html
 - Created initial color scheme
-### [Team Member 2 Name]
--
-### [Team Member 3 Name]
+### Dillon Tran
+- To update
+### Md Tajrian Taher
 -
 ### [Team Member 3 Name]
 -
