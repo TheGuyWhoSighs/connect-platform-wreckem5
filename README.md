@@ -3,7 +3,7 @@
 ## Team Name/Number: Wreckem 5
 ## Team Members
 - Matthew Thetford - TheGuyWhoSighs
-- [Name] - [GitHub Username]
+- Dillon Tran - red-the-rock
 - [Name] - [GitHub Username]
 - [Name] - [GitHub Username]
 ## Project Description
@@ -24,8 +24,8 @@ implements. (Refer to BMC document)
 - Hosted Github Repository
 - Created initial index.html
 - Created initial color scheme
-### [Team Member 2 Name]
--
+### Dillon Tran
+- To update
 ### [Team Member 3 Name]
 -
 ### [Team Member 3 Name]
