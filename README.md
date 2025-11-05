@@ -4,7 +4,7 @@
 ## Team Members
 - Matthew Thetford - TheGuyWhoSighs
 - Dillon Tran - red-the-rock
-- [Name] - [GitHub Username]
+- Md Tajrian Taher - ttjim
 - [Name] - [GitHub Username]
 ## Project Description
 Brief description of the Connect platform and what this project
@@ -26,7 +26,7 @@ implements. (Refer to BMC document)
 - Created initial color scheme
 ### Dillon Tran
 - To update
-### [Team Member 3 Name]
+### Md Tajrian Taher
 -
 ### [Team Member 3 Name]
 -
