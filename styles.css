@@ -56,50 +56,45 @@
 
 :root {
     /* PRIMARY COLORS - Main brand colors used throughout the site */
-    --primary-color: #2563eb;      /* Blue - Used for main actions, links, emphasis */
-    --secondary-color: #7c3aed;    /* Purple - Used for secondary actions, accents */
-    
+    --primary-color: #A13520; /* Brown - Used for main actions, links, emphasis -NOTE FROM MATTHEW: Used brown as that is the color scheme jim went with on his figma, thought it looked good */
+    --secondary-color: #4F200F; /* Purple - Used for secondary actions, accents */
     /* TEXT COLORS - For readability and hierarchy */
-    --text-dark: #1f2937;          /* Dark gray - Main body text, headings */
-    --text-light: #6b7280;         /* Medium gray - Secondary text, descriptions */
-    
+    --text-dark: #1f2937; /* Dark gray - Main body text, headings */
+    --text-light: #6b7280; /* Medium gray - Secondary text, descriptions */
     /* BACKGROUND COLORS - For page sections and containers */
-    --background: #ffffff;         /* White - Main page background */
-    --background-alt: #f9fafb;     /* Light gray - Alternate sections, cards */
-    
+    --background: #ffffff; /* White - Main page background */
+    --background-alt: #f9fafb; /* Light gray - Alternate sections, cards */
     /* BORDER AND DIVIDER COLORS */
-    --border-color: #e5e7eb;       /* Light gray - Borders, dividers, outlines */
-    
+    --border-color: #e5e7eb; /* Light gray - Borders, dividers, outlines */
     /* STATUS COLORS - For feedback and states */
-    --success-color: #10b981;      /* Green - Success messages, completed items */
-    --error-color: #ef4444;        /* Red - Error messages, warnings */
-    --warning-color: #f59e0b;      /* Orange - Warning states */
-    --info-color: #3b82f6;         /* Blue - Information messages */
-    
+    --success-color: #10b981; /* Green - Success messages, completed items */
+    --error-color: #ef4444; /* Red - Error messages, warnings */
+    --warning-color: #f59e0b; /* Orange - Warning states */
+    --info-color: #3b82f6; /* Blue - Information messages */
     /* SHADOW VALUES - For depth and elevation */
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
     --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
     --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-    
     /* SPACING VALUES - For consistent spacing */
-    --spacing-xs: 0.25rem;  /* 4px */
-    --spacing-sm: 0.5rem;   /* 8px */
-    --spacing-md: 1rem;     /* 16px */
-    --spacing-lg: 1.5rem;   /* 24px */
-    --spacing-xl: 2rem;     /* 32px */
-    
+    --spacing-xs: 0.25rem; /* 4px */
+    --spacing-sm: 0.5rem; /* 8px */
+    --spacing-md: 1rem; /* 16px */
+    --spacing-lg: 1.5rem; /* 24px */
+    --spacing-xl: 2rem; /* 32px */
     /* BORDER RADIUS - For rounded corners */
     --radius-sm: 4px;
     --radius-md: 6px;
     --radius-lg: 8px;
-    --radius-full: 9999px;  /* Perfect circle */
-    
+    --radius-full: 9999px; /* Perfect circle */
     /* TRANSITION SPEED - For smooth animations */
     --transition-fast: 0.2s;
     --transition-normal: 0.3s;
     --transition-slow: 0.5s;
 }
 
+
+
+/*This Is Completed By Matthew*/
 /* TODO: Customize Your Color Scheme
    Replace the color values above to match your team's Figma design.
    
