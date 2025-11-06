@@ -25,7 +25,9 @@ implements. (Refer to BMC document)
 - Created initial index.html
 - Created initial color scheme
 ### Dillon Tran
-- To update
+- Created initial company-dashboard.html
+- Created styling and formatting for page
+- Updated style.css
 ### [Team Member 3 Name]
 -
 ### [Team Member 3 Name]
