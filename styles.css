@@ -513,7 +513,7 @@ button {
 /* PRIMARY BUTTON HOVER STATE */
 .btn-primary:hover {
     /* Darken the background slightly */
-    background-color: #1d4ed8;  /* Darker blue */
+    background-color: #941837;  /* Darker red */
     
     /* TRANSFORM: translateY(-2px)
        Moves button up 2px, creates "lift" effect */
@@ -538,7 +538,7 @@ button {
 }
 
 .btn-secondary:hover {
-    background-color: #6d28d9;  /* Darker purple */
+    background-color: #470012;  /* Darker maroon */
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -677,38 +677,25 @@ button {
 */
 
 .hero {
-    /* BACKGROUND
-       Uses a gradient from primary to secondary color */
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    /* EXPLANATION:
-       - linear-gradient = smooth color transition
-       - 135deg = angle of gradient (diagonal from top-left to bottom-right)
-       - 0% to 100% = start and end points
-    */
-    
-    /* TEXT COLOR */
+    /* LAYER 1: Transparent → solid gradient overlay */
+    background-image:
+        linear-gradient(to right, rgba(0,0,0,0) 60%, var(--secondary-color) 100%),
+        linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+
+    /* Make image fill area nicely */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* TEXT STYLING */
     color: white;
-    
-    /* PADDING
-       Large padding to create spacious feel */
-    padding: 6rem 0;        /* 96px top/bottom, 0 left/right */
-    
-    /* TEXT ALIGNMENT */
+    padding: 6rem 0;
     text-align: center;
-    
-    /* TODO: Add Background Image Instead of Gradient
-       HINT: You can use a background image instead of gradient
-       EXAMPLE:
-       background-image: url('../images/hero-bg.jpg');
-       background-size: cover;
-       background-position: center;
-       
-       NOTE: Make sure to keep text readable by:
-       - Using semi-transparent overlay
-       - Choosing appropriate image
-       - Adding text shadow if needed
-    */
+
+    /* Optional: Slight text shadow for readability */
+    text-shadow: 0 10px 10px rgba(0, 0, 0, 0.8);
 }
+
 
 /* HERO HEADLINE */
 .hero h2 {
@@ -719,7 +706,7 @@ button {
     
     /* TEXT SHADOW
        Subtle shadow makes text easier to read on gradient background */
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-shadow: 0 10px 10px rgba(0,0,0,0.6);
 }
 
 /* HERO DESCRIPTION */
@@ -2742,6 +2729,95 @@ body.keyboard-navigation *:focus {
 .italic { font-style: italic; }
 .uppercase { text-transform: uppercase; }
 .capitalize { text-transform: capitalize; }
+
+
+/*COMPANY DASHBOARD*/
+/* --- Small dividers between dashboard cards --- */
+.three-column {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0,0,0,0.1); /* optional top border */
+    padding-top: 1.5rem;
+}
+
+/* Add vertical dividers between dashboard cards */
+.three-column .card {
+    flex: 1 1 30%;
+    position: relative;
+    padding: 1rem;
+}
+
+/* Vertical divider except for the last card */
+.three-column .card:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -1rem;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background-color: rgba(0,0,0,0.15);
+}
+
+/* --- Dividers between internship postings --- */
+.posting-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.posting-card {
+    flex: 1 1 30%;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+/* Vertical divider between postings */
+.posting-card:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -1rem;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background-color: rgba(0,0,0,0.15);
+}
+
+.dashboard-image img {
+    width: 80%;            /* Scales down the image */
+    max-width: 400px;      /* Prevents it from being too large */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    object-fit: contain;
+}
+
+
+/* Ensure responsive stacking looks clean */
+@media (max-width: 900px) {
+    .three-column .card:not(:last-child)::after,
+    .posting-card:not(:last-child)::after {
+        display: none;
+    }
+
+    .three-column,
+    .posting-grid {
+        gap: 1.5rem;
+    }
+
+    .three-column .card,
+    .posting-card {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding-bottom: 1.5rem;
+    }
+}
+
+
 
 /* ==========================================
    END OF STYLESHEET
