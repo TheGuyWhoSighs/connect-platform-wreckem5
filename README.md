@@ -4,8 +4,8 @@
 ## Team Members
 - Matthew Thetford - TheGuyWhoSighs
 - Dillon Tran - red-the-rock
-- [Name] - [GitHub Username]
-- [Name] - [GitHub Username]
+- Md Tajrian Taher - ttjim
+- Grayson Kelley - graysonakelley-a11y
 ## Project Description
 Brief description of the Connect platform and what this project
 implements. (Refer to BMC document)
@@ -28,7 +28,7 @@ implements. (Refer to BMC document)
 - Created initial company-dashboard.html
 - Created styling and formatting for page
 - Updated style.css
-### [Team Member 3 Name]
+### Md Tajrian Taher
 -
-### [Team Member 3 Name]
+### Grayson Kelley
 -
