@@ -5,7 +5,7 @@
 - Matthew Thetford - TheGuyWhoSighs
 - Dillon Tran - red-the-rock
 - Md Tajrian Taher - ttjim
-- [Name] - [GitHub Username]
+- Grayson Kelley - graysonakelley-a11y
 ## Project Description
 Brief description of the Connect platform and what this project
 implements. (Refer to BMC document)
@@ -28,5 +28,5 @@ implements. (Refer to BMC document)
 - To update
 ### Md Tajrian Taher
 -
-### [Team Member 3 Name]
+### Grayson Kelley
 -
