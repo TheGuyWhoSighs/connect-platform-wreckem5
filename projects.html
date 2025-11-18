@@ -63,7 +63,7 @@
     cursor: pointer;
 }
 .content{
-    margin-left: 100px;
+    margin-left: 120px;
     margin-top: 30px;
     background-color: #f7f5a1;
     padding: 20px;
@@ -94,10 +94,15 @@
     font-weight: bold;
 }
 
- .filters img{
-        margin-top: 100px;
-        margin-bottom: 200px;
-      }
+.filters {
+    position: absolute;
+    top: 120px;     /* Adjust up/down */
+    left: 20px;     /* Keep images at the left side */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;      /* Space between the images */
+}
+
     
 </style>
 </head>
@@ -107,7 +112,7 @@
             <div class="search-bar">
                 <input type="text" placeholder="https://">
             </div>
-            <div class=""profile">
+            <div class="profile">
             <span>Username</span>
             <img src="#" alt="Profile Icon">
             </div>
