@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-
+        }
 
         .container{
             background-color: #e7e18e;
@@ -36,3 +36,98 @@
     border-radius: 20px;
     outline: none;
 }
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.profile img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ddd;
+}
+.page
+{
+    position: absolute;
+    left: 20px;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.filters img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.content{
+    margin-left: 100px;
+    margin-top: 30px;
+    background-color: #f7f5a1;
+    padding: 20px;
+    border-radius: 10px;
+
+
+}
+.pos{
+    margin-bottom: 20px;
+}
+.post h3{
+    margin: 0 0 5px;
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+.home-btn{
+    background-color: 99c2ff;
+    padding: 9px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.page{
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <div class="search-bar">
+                <input type="text" placeholder="https://">
+            </div>
+            <div class=""profile">
+            <span>Username</span>
+            <img src="#" alt="Profile Icon">
+            </div>
+        </div>
+        <div class="filters">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="Steam">
+    </div>
+    <div class="content">
+      <div class="post">
+        <h3>1. How to Decide a Software or Browser Starter Source</h3>
+  <p>It’s a good idea to use tools by their name or use either the Steam app or browser...</p>
+      </div>
+
+      <div class="post">
+        <h3>2. How to Find Interests in Programming or Steam</h3>
+        <p>Steam, known for most interactive libraries for gaming including its associated software...</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="home-btn">Home</div>
+      <div class="page">Page 1 →</div>
+    </div>
+  </div>
+
+</body>
+</html>
+
