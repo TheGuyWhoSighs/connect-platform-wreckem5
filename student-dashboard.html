@@ -4,134 +4,311 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* GLOBAL */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* Clean white background like screenshot */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #2c2c2c;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            width: 100%;
+            background: #ffffff;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+            .navbar .container {
+                width: 90%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+            .nav-links a {
+                text-decoration: none;
+                font-weight: bold;
+                color: #1c1c1c;
+                font-size: 15px;
+            }
+
+                .nav-links a:hover {
+                    color: #8b3a2f;
+                }
+
+        .active {
+            color: #8b3a2f;
+        }
+
+        /* HEADER */
+        .dashboard-header {
+            width: 90%;
+            background: linear-gradient(90deg, #7a2f27, #9b3b2f);
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        }
+
+        .dashboard-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-picture {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .stats {
+            display: flex;
+            gap: 25px;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.15);
+            padding: 15px 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+            .stat-box h3 {
+                margin: 0;
+                font-size: 22px;
+                color: #ffffff;
+            }
+
+            .stat-box p {
+                margin: 0;
+                font-size: 13px;
+                opacity: 0.9;
+            }
+
+        /* MAIN CONTENT */
+        .dashboard-main {
+            width: 90%;
+            margin-top: 30px;
+            display: flex;
+            gap: 25px;
+        }
+
+        .main-content {
+            flex: 3;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* CARDS */
+        .project-card, .opportunity-card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.2s;
+        }
+
+            .project-card:hover, .opportunity-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+            }
+
+        .project-grid, .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e6e6e6;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+            .progress-bar span {
+                height: 100%;
+                background: #8b3a2f; /* strong deep brown */
+                display: block;
+                border-radius: 10px;
+            }
+
+        /* BUTTONS */
+        .btn-primary, .btn-secondary {
+            background: #8b3a2f;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+            .btn-primary:hover, .btn-secondary:hover {
+                background: #6d2e24;
+            }
+
+        /* SIDEBAR */
+        .sidebar {
+            flex: 1;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            height: fit-content;
+        }
+
+            .sidebar h3 {
+                color: #7a2f27;
+            }
+
+        .skills-list span {
+            background: #f1e4e2;
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: #7a2f27;
+            margin-right: 6px;
+            display: inline-block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 40px;
+            padding: 25px;
+            width: 100%;
+            background: #ffffff;
+            border-top: 1px solid #e6e6e6;
+            text-align: center;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
+
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <a href="index.html"><h1>PLACEHOLDER</h1></a>
+                <a href="index.html" style="text-decoration:none; color:#8b3a2f;">
+                    <h1 style="margin:0; font-weight:bold;">StudentBridge</h1>
+                </a>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Opportunities</a></li>
                 <li><a href="student-dashboard.html" class="active">Student Dashboard</a></li>
                 <li><a href="company-dashboard.html">Company Dashboard</a></li>
-                <li><a href="#" class="btn-login">Logout</a></li>
+                <li><a href="#">Logout</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Dashboard Header -->
-    <header class="dashboard-header section">
-        <div class="container dashboard-header-flex">
+    <header class="dashboard-header">
+        <div class="dashboard-header-flex">
             <div class="profile-info">
                 <h2>Welcome, Student Name</h2>
                 <p>Your personalized dashboard overview.</p>
             </div>
-            <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-picture">
+            <img src="images/pfp.jpg" class="profile-picture">
             <div class="stats">
-                <div class="stat-box">
-                    <h3>3</h3>
-                    <p>Projects Applied</p>
-                </div>
-                <div class="stat-box">
-                    <h3>1</h3>
-                    <p>Active Projects</p>
-                </div>
-                <div class="stat-box">
-                    <h3>2</h3>
-                    <p>Completed</p>
-                </div>
+                <div class="stat-box"><h3>3</h3><p>Applied</p></div>
+                <div class="stat-box"><h3>1</h3><p>Active</p></div>
+                <div class="stat-box"><h3>2</h3><p>Completed</p></div>
             </div>
         </div>
     </header>
 
-    <div class="container dashboard-main">
+    <div class="dashboard-main">
         <div class="main-content">
-            <!-- Active Projects Section -->
-            <section class="section">
+            <section>
                 <h2>Active Projects</h2>
                 <div class="project-grid">
                     <div class="project-card">
                         <h3>Project Title</h3>
-                        <p class="small">Company Name</p>
+                        <p>Company Name</p>
                         <div class="progress-bar"><span style="width:60%"></span></div>
-                        <p class="small">Deadline: 5 Days Remaining</p>
+                        <p>Deadline: 5 Days Remaining</p>
                         <button class="btn-primary">View Details</button>
                     </div>
 
                     <div class="project-card">
                         <h3>Project Title</h3>
-                        <p class="small">Company Name</p>
+                        <p>Company Name</p>
                         <div class="progress-bar"><span style="width:35%"></span></div>
-                        <p class="small">Deadline: 12 Days Remaining</p>
+                        <p>Deadline: 12 Days Remaining</p>
                         <button class="btn-primary">View Details</button>
                     </div>
                 </div>
             </section>
 
-            <!-- Available Opportunities Section -->
-            <section class="section">
+            <section>
                 <h2>Available Opportunities</h2>
-
                 <div class="opportunity-grid">
                     <div class="opportunity-card">
                         <h3>Project Internship Title</h3>
-                        <p class="small">Skills: React, CSS</p>
-                        <p class="description">Short description of the role and what the student will work on.</p>
-                        <p class="small">Duration: 3 Months</p>
+                        <p>Skills: React, CSS</p>
+                        <p>Short description here.</p>
+                        <p>Duration: 3 Months</p>
                         <button class="btn-secondary">Apply Now</button>
                     </div>
 
                     <div class="opportunity-card">
                         <h3>Project Internship Title</h3>
-                        <p class="small">Skills: Python, Data</p>
-                        <p class="description">Short description of the role and responsibilities.</p>
-                        <p class="small">Duration: 10 Weeks</p>
+                        <p>Skills: Python, Data</p>
+                        <p>Short description here.</p>
+                        <p>Duration: 10 Weeks</p>
                         <button class="btn-secondary">Apply Now</button>
                     </div>
 
                     <div class="opportunity-card">
                         <h3>Project Internship Title</h3>
-                        <p class="small">Skills: UI/UX, Figma</p>
-                        <p class="description">Short description focusing on design work.</p>
-                        <p class="small">Duration: 2 Months</p>
+                        <p>Skills: UI/UX, Figma</p>
+                        <p>Short description here.</p>
+                        <p>Duration: 2 Months</p>
                         <button class="btn-secondary">Apply Now</button>
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- Profile Sidebar -->
         <aside class="sidebar">
             <h3>Student Name</h3>
-            <p class="small">Major: Computer Science</p>
+            <p>Major: Computer Science</p>
             <h4>Skills</h4>
             <div class="skills-list">
                 <span>React</span><span>JavaScript</span><span>Python</span><span>SQL</span>
             </div>
             <h4>Portfolio</h4>
-            <ul class="profile-links">
-                <li><a href="#">GitHub</a></li>
-                <li><a href="#">LinkedIn</a></li>
-            </ul>
-            <button class="btn-primary full">Edit Profile</button>
+            <a href="#">GitHub</a><br>
+            <a href="#">LinkedIn</a>
+            <button class="btn-primary full" style="margin-top:10px;">Edit Profile</button>
         </aside>
     </div>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-links">
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-            </div>
-            <p>&copy; 2025 PLACEHOLDER. All rights reserved.</p>
-        </div>
+    <footer>
+        <p>&copy; 2025 StudentBridge. All rights reserved.</p>
     </footer>
 
 </body>
