@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportunities – Connect Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body{
+         margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #cfd28f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container{
+            background-color: #e7e18e;
+            width: 800px;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0,0.2)
+        }
+    .top-bar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+     }
+.search-bar input{
+    width: 300px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+}
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.profile img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ddd;
+}
+.page
+{
+    position: absolute;
+    left: 20px;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.filters img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.content{
+    margin-left: 120px;
+    margin-top: 30px;
+    background-color: #f7f5a1;
+    padding: 20px;
+    border-radius: 10px;
+
+
+}
+.pos{
+    margin-bottom: 20px;
+}
+.post h3{
+    margin: 0 0 5px;
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+.home-btn{
+    background-color: 99c2ff;
+    padding: 9px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.page{
+    font-weight: bold;
+}
+
+.filters {
+    position: absolute;
+    top: 120px;     /* Adjust up/down */
+    left: 20px;     /* Keep images at the left side */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;      /* Space between the images */
+}
+
+    
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <div class="search-bar">
+                <input type="text" placeholder="https://">
+            </div>
+            <div class="profile">
+            <span>Username</span>
+            <img src="#" alt="Profile Icon">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" aria-current="page">Opportunities</a></li>
+                <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                <li><a href="company-dashboard.html">Company Dashboard</a></li>
+                <li><a href="#" class="btn-login">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Explore Internship Opportunities</h2>
+            <p class="hero-description">Browse available listings across skills, industries, and experience levels.</p>
+        </div>
+    </section>
+
+    <!-- Opportunities Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Available Opportunities</h2>
+            <div class="opportunities-grid">
+                <div class="opportunity-card">
+                    <div class="company-logo"></div>
+                    <h4>Software Development Starter Project</h4>
+                    <p class="company">Google</p>
+                    <p class="description">Learn the fundamentals of choosing tools, browsers, and setup practices for beginner developers.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">Beginner Tools</span>
+                    </div>
+                    <div class="opportunity-meta">
+                        <span class="duration">2 Weeks</span>
+                        <span class="compensation">Unpaid</span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card">
+                    <div class="company-logo"></div>
+                    <h4>Finding Interests in Programming</h4>
+                    <p class="company">Steam</p>
+                    <p class="description">Explore game‑related software workflows and programming paths through Steam's ecosystem.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">Unity</span>
+                    </div>
+                    <div class="opportunity-meta">
+                        <span class="duration">1 Month</span>
+                        <span class="compensation">Unpaid</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+            <p>&copy; 2025 PLACEHOLDER. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

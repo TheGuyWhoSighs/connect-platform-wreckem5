@@ -3,9 +3,9 @@
 ## Team Name/Number: Wreckem 5
 ## Team Members
 - Matthew Thetford - TheGuyWhoSighs
-- [Name] - [GitHub Username]
-- [Name] - [GitHub Username]
-- [Name] - [GitHub Username]
+- Dillon Tran - red-the-rock
+- Md Tajrian Taher - ttjim
+- Grayson Kelley - graysonakelley-a11y
 ## Project Description
 Brief description of the Connect platform and what this project
 implements. (Refer to BMC document)
@@ -24,9 +24,15 @@ implements. (Refer to BMC document)
 - Hosted Github Repository
 - Created initial index.html
 - Created initial color scheme
-### [Team Member 2 Name]
--
-### [Team Member 3 Name]
--
-### [Team Member 3 Name]
--
+### Dillon Tran
+- Created initial company-dashboard.html
+- Created styling and formatting for page
+- Updated style.css
+### Md Tajrian Taher
+- Created student-dashboard.html
+- Styled and formatted the page
+- Updated the design
+### Grayson Kelley
+
+- Wrote the the code for the internships on projects.html.
+- Work on the projecty slideshow.

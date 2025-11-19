@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Dashboard - Connect Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><h1>PLACEHOLDER</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Opportunities</a></li>
+                <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                <li><a href="company-dashboard.html" class="active">Company Dashboard</a></li>
+                <li><a href="#" class="btn-login">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero company-hero">
+        <div class="container">
+            <h2>Welcome, Company Partner</h2>
+            <p class="hero-description">
+                Manage your internship listings, review applicants, and connect with top student talent.
+            </p>
+            <div class="cta-buttons">
+                <a href="#postings" class="btn btn-primary">Post New Opportunity</a>
+                <a href="#analytics" class="btn btn-secondary">View Analytics</a>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+   <!-- Dashboard Overview -->
+<section id="dashboard-overview" class="section">
+    <div class="container dashboard-layout">
+        <div class="dashboard-text">
+            <h2>Your Dashboard</h2>
+            <div class="three-column">
+                <div class="card">
+                    <h3>Active Postings</h3>
+                    <p>Track, edit, or close current internship listings.</p>
+                    <a href="#postings" class="btn btn-primary">Manage Listings</a>
+                </div>
+                <div class="card">
+                    <h3>Applicants</h3>
+                    <p>Review and shortlist students who applied to your openings.</p>
+                    <a href="#applicants" class="btn btn-primary">View Applicants</a>
+                </div>
+                <div class="card">
+                    <h3>Analytics</h3>
+                    <p>See performance metrics and engagement data for your listings.</p>
+                    <a href="#analytics" class="btn btn-primary">Open Analytics</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-image">
+            <img src="images/company_dashboard.jpg" alt="Company Dashboard Overview">
+        </div>
+    </div>
+</section>
+
+    <hr class="section-divider">
+
+    <!-- Postings Section -->
+    <section id="postings" class="section light-bg">
+        <div class="container">
+            <h2>Active Internship Postings</h2>
+            <div class="posting-grid">
+                <div class="posting-card">
+                    <h3>Software Engineering Intern</h3>
+                    <p><strong>Applicants:</strong> 12</p>
+                    <p><strong>Status:</strong> Open</p>
+                    <div class="actions">
+                        <a href="#" class="btn btn-secondary">Edit</a>
+                        <a href="#" class="btn btn-secondary">Close</a>
+                    </div>
+                </div>
+                <div class="posting-card">
+                    <h3>Marketing Assistant</h3>
+                    <p><strong>Applicants:</strong> 8</p>
+                    <p><strong>Status:</strong> Closed</p>
+                    <div class="actions">
+                        <a href="#" class="btn btn-secondary">Reopen</a>
+                    </div>
+                </div>
+                <div class="posting-card">
+                    <h3>Graphic Design Intern</h3>
+                    <p><strong>Applicants:</strong> 5</p>
+                    <p><strong>Status:</strong> Open</p>
+                    <div class="actions">
+                        <a href="#" class="btn btn-secondary">Edit</a>
+                        <a href="#" class="btn btn-secondary">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Analytics Section -->
+    <section id="analytics" class="section">
+        <div class="container">
+            <h2>Listing Analytics</h2>
+            <div class="two-column spaced-section">
+                <div class="column">
+                    <h3>Overview</h3>
+                    <ul class="benefits-list">
+                        <li><strong>Total Views:</strong> 1,240</li>
+                        <li><strong>Applications Received:</strong> 56</li>
+                        <li><strong>Positions Filled:</strong> 3</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Performance Insights</h3>
+                    <p>
+                        Your Software Engineering Intern listing is receiving the least engagement.
+                        Consider adding similar roles or extending the deadline to reach more applicants.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+            <p class="copyright">&copy; 2025 PLACEHOLDER. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
