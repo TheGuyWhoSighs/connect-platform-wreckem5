@@ -29,7 +29,9 @@ implements. (Refer to BMC document)
 - Created styling and formatting for page
 - Updated style.css
 ### Md Tajrian Taher
--
+- Created student-dashboard.html
+- Styled and formatted the page
+- Updated the design
 ### Grayson Kelley
 
 - Wrote the the code for the internships on projects.html.
