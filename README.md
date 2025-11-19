@@ -34,4 +34,5 @@ implements. (Refer to BMC document)
 - Updated the design
 ### Grayson Kelley
 
--
+- Wrote the the code for the internships on projects.html.
+- Work on the projecty slideshow.
