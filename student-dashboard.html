@@ -5,195 +5,216 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
     <style>
-/* GLOBAL */
-body{
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff; /* Clean white background like screenshot */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #2c2c2c;
-}
+        /* GLOBAL */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* Clean white background like screenshot */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #2c2c2c;
+        }
 
-/* NAVBAR */
-.navbar{
-    width: 100%;
-    background: #ffffff;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    border-bottom: 1px solid #e6e6e6;
-}
-.navbar .container{
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.nav-links{
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-.nav-links a{
-    text-decoration: none;
-    font-weight: bold;
-    color: #1c1c1c;
-    font-size: 15px;
-}
-.nav-links a:hover{
-    color: #8b3a2f;
-}
-.active{
-    color: #8b3a2f;
-}
+        /* NAVBAR */
+        .navbar {
+            width: 100%;
+            background: #ffffff;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #e6e6e6;
+        }
 
-/* HEADER */
-.dashboard-header{
-    width: 90%;
-    background: linear-gradient(90deg, #7a2f27, #9b3b2f);
-    margin-top: 30px;
-    padding: 30px;
-    border-radius: 15px;
-    color: white;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-}
-.dashboard-header-flex{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.profile-picture{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid white;
-}
-.stats{
-    display: flex;
-    gap: 25px;
-}
-.stat-box{
-    background: rgba(255,255,255,0.15);
-    padding: 15px 20px;
-    border-radius: 12px;
-    text-align: center;
-}
-.stat-box h3{
-    margin: 0;
-    font-size: 22px;
-    color: #ffffff;
-}
-.stat-box p{
-    margin: 0;
-    font-size: 13px;
-    opacity: 0.9;
-}
+            .navbar .container {
+                width: 90%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-/* MAIN CONTENT */
-.dashboard-main{
-    width: 90%;
-    margin-top: 30px;
-    display: flex;
-    gap: 25px;
-}
-.main-content{
-    flex: 3;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
 
-/* CARDS */
-.project-card, .opportunity-card{
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: 0.2s;
-}
-.project-card:hover, .opportunity-card:hover{
-    transform: translateY(-4px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
-}
-.project-grid, .opportunity-grid{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-.progress-bar{
-    width: 100%;
-    height: 10px;
-    background: #e6e6e6;
-    border-radius: 10px;
-    margin: 10px 0;
-}
-.progress-bar span{
-    height: 100%;
-    background: #8b3a2f; /* strong deep brown */
-    display: block;
-    border-radius: 10px;
-}
+            .nav-links a {
+                text-decoration: none;
+                font-weight: bold;
+                color: #1c1c1c;
+                font-size: 15px;
+            }
 
-/* BUTTONS */
-.btn-primary, .btn-secondary{
-    background: #8b3a2f;
-    color: white;
-    padding: 10px 18px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.2s;
-}
-.btn-primary:hover, .btn-secondary:hover{
-    background: #6d2e24;
-}
+                .nav-links a:hover {
+                    color: #8b3a2f;
+                }
 
-/* SIDEBAR */
-.sidebar{
-    flex: 1;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    height: fit-content;
-}
-.sidebar h3{
-    color: #7a2f27;
-}
-.skills-list span{
-    background: #f1e4e2;
-    padding: 6px 12px;
-    border-radius: 6px;
-    color: #7a2f27;
-    margin-right: 6px;
-    display: inline-block;
-    margin-bottom: 6px;
-    font-weight: bold;
-}
+        .active {
+            color: #8b3a2f;
+        }
 
-/* FOOTER */
-footer{
-    margin-top: 40px;
-    padding: 25px;
-    width: 100%;
-    background: #ffffff;
-    border-top: 1px solid #e6e6e6;
-    text-align: center;
-    color: #333;
-}
-</style>
+        /* HEADER */
+        .dashboard-header {
+            width: 90%;
+            background: linear-gradient(90deg, #7a2f27, #9b3b2f);
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        }
+
+        .dashboard-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-picture {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .stats {
+            display: flex;
+            gap: 25px;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.15);
+            padding: 15px 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+            .stat-box h3 {
+                margin: 0;
+                font-size: 22px;
+                color: #ffffff;
+            }
+
+            .stat-box p {
+                margin: 0;
+                font-size: 13px;
+                opacity: 0.9;
+            }
+
+        /* MAIN CONTENT */
+        .dashboard-main {
+            width: 90%;
+            margin-top: 30px;
+            display: flex;
+            gap: 25px;
+        }
+
+        .main-content {
+            flex: 3;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* CARDS */
+        .project-card, .opportunity-card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.2s;
+        }
+
+            .project-card:hover, .opportunity-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+            }
+
+        .project-grid, .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e6e6e6;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+            .progress-bar span {
+                height: 100%;
+                background: #8b3a2f; /* strong deep brown */
+                display: block;
+                border-radius: 10px;
+            }
+
+        /* BUTTONS */
+        .btn-primary, .btn-secondary {
+            background: #8b3a2f;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+            .btn-primary:hover, .btn-secondary:hover {
+                background: #6d2e24;
+            }
+
+        /* SIDEBAR */
+        .sidebar {
+            flex: 1;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            height: fit-content;
+        }
+
+            .sidebar h3 {
+                color: #7a2f27;
+            }
+
+        .skills-list span {
+            background: #f1e4e2;
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: #7a2f27;
+            margin-right: 6px;
+            display: inline-block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 40px;
+            padding: 25px;
+            width: 100%;
+            background: #ffffff;
+            border-top: 1px solid #e6e6e6;
+            text-align: center;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-    <a href="index.html" style="text-decoration:none; color:#8b3a2f;">
-        <h1 style="margin:0; font-weight:bold;">PLACEHOLDER</h1></a></div>
+                <a href="index.html" style="text-decoration:none; color:#8b3a2f;">
+                    <h1 style="margin:0; font-weight:bold;">StudentBridge</h1>
+                </a>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Opportunities</a></li>
@@ -287,7 +308,7 @@ footer{
     </div>
 
     <footer>
-        <p>&copy; 2025 PLACEHOLDER. All rights reserved.</p>
+        <p>&copy; 2025 StudentBridge. All rights reserved.</p>
     </footer>
 
 </body>
